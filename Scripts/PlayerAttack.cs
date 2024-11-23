@@ -19,7 +19,6 @@ public class PlayerAttack : MonoBehaviour
     }
 
     void Attack(){
-        GameManager.Instance.CallPlayerTakeDamage();
         canAttack = false;
         weaponHolder.SetActive(true);
         GameManager.Instance.CallPlayerPauseInputForSecondsEvent(attackCooldown);

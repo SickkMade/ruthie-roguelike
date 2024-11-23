@@ -25,19 +25,24 @@ public class HeartsCreatorUI : MonoBehaviour
         GameManager.Instance.PlayerTakeDamage -= SetHearts;
     }
 
-    void SetHearts(){
-        int newHealth = GameManager.Instance.playerData.currentHealth;
+    void SetHearts()
+    {
+        int currentHealth = GameManager.Instance.playerData.currentHealth;
         int maxHealth = GameManager.Instance.playerData.maxHealth;
-        for(int i = 0; i < maxHealth; i++){
-            int indexToPrefab = Mathf.FloorToInt(i/2);
-            if(i <= newHealth){
-                if(i % 2 == 0)
-                    hearts[indexToPrefab].ChangeHeartType(HeartType.Half);
-                else
-                    hearts[indexToPrefab].ChangeHeartType(HeartType.Full);
+        
+        for(int i = 0; i < maxHealth/2; i++)
+        {
+            if(currentHealth >= (i + 1) * 2)
+            {
+                hearts[i].ChangeHeartType(HeartType.Full);
             }
-            else{
-                hearts[indexToPrefab].ChangeHeartType(HeartType.Empty);
+            else if(currentHealth == (i * 2) + 1)
+            {
+                hearts[i].ChangeHeartType(HeartType.Half);
+            }
+            else
+            {
+                hearts[i].ChangeHeartType(HeartType.Empty);
             }
         }
     }

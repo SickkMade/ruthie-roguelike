@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
         SetPlayerSpawnEvent?.Invoke(node);
     }
 
-    public void CallPlayerTakeDamage(){
-        playerData.currentHealth -= 1;
+    public void CallPlayerTakeDamage(int damage){
+        playerData.currentHealth -= damage;
         PlayerTakeDamage?.Invoke();
     }
 

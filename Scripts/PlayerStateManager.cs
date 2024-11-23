@@ -10,9 +10,6 @@ public class PlayerStateManager : MonoBehaviour
     void OnDisable(){
         GameManager.Instance.SetPlayerSpawnEvent -= SetPlayerPosition;
     }
-    void SetPlayerPosition(Vector3 position){
-        transform.position = position;
-    }
 
     void SetPlayerPosition(Node node){
         transform.position = node.room.Value.center;
